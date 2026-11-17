@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101c2a">
+  <meta name="robots" content="index, follow">
+  <meta name="description" content="Urban Craft Renovations LLC provides painting, flooring, drywall, carpentry, remodeling and exterior improvement services across Metro Atlanta, Georgia. Your vision, our mission.">
+  <meta property="og:title" content="Urban Craft Renovations LLC | Your Vision, Our Mission">
+  <meta property="og:description" content="Renovation work built with precision. Contact Urban Craft Renovations for your next property improvement project in Metro Atlanta.">
+  <meta property="og:type" content="website">
+  <title>Urban Craft Renovations LLC | Your Vision, Our Mission</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #101c2a;
+      --navy-2: #1b3046;
+      --ink: #182331;
+      --muted: #647181;
+      --silver: #c6cdd5;
+      --line: #e1e6eb;
+      --paper: #f4f6f8;
+      --white: #fff;
+      --accent: #c9a77c;
+      --accent-2: #e2c79f;
+      --max: 1160px;
+      --radius: 18px;
+      --shadow: 0 22px 60px rgba(16, 28, 42, .14);
+      --ease: cubic-bezier(.22, .8, .24, 1);
+      --display: Sora, Inter, "Segoe UI", Arial, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body { font-family: Inter, "Segoe UI", Arial, sans-serif; color: var(--ink); background: var(--white); line-height: 1.65; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea, select { font: inherit; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(91%, var(--max)); margin-inline: auto; }
+
+    /* Scroll progress */
+    .progress { position: fixed; top: 0; left: 0; height: 3px; width: 100%; z-index: 50; transform-origin: 0 50%; transform: scaleX(0); background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
+
+    .topline { background: #0a111a; color: #d8dee5; font-size: 12px; letter-spacing: .08em; }
+    .topline-inner { min-height: 36px; display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+    .topline a { color: #fff; font-weight: 700; position: relative; }
+    .topline a::after { content: ""; position: absolute; left: 0; bottom: -2px; width: 100%; height: 1px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform .35s var(--ease); }
+    .topline a:hover::after { transform: scaleX(1); }
+
+    header { position: sticky; top: 0; z-index: 40; background: rgba(16, 28, 42, .97); color: #fff; border-bottom: 1px solid rgba(255,255,255,.12); backdrop-filter: blur(14px); transition: box-shadow .35s, background .35s; }
+    header.scrolled { box-shadow: 0 10px 34px rgba(0,0,0,.28); background: rgba(12, 22, 34, .96); }
+    .nav { min-height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 28px; transition: min-height .35s var(--ease); }
+    header.scrolled .nav { min-height: 68px; }
+    .brand { display: inline-flex; align-items: center; gap: 12px; flex-shrink: 0; }
+    .brand-mark { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid #aeb8c3; color: #fff; font-weight: 900; letter-spacing: -.08em; font-size: 16px; transition: background .3s, color .3s, transform .4s var(--ease), border-color .3s; }
+    .brand:hover .brand-mark { background: #fff; color: var(--navy); transform: rotate(-4deg); border-color: #fff; }
+    .brand-name { display: block; font-size: 15px; font-weight: 900; letter-spacing: .09em; line-height: 1.2; }
+    .brand-tag { display: block; color: #b9c3ce; font-size: 9px; letter-spacing: .19em; margin-top: 5px; }
+    nav { display: flex; align-items: center; gap: 25px; font-size: 13px; font-weight: 700; }
+    nav a:not(.nav-cta) { color: #e2e7ec; position: relative; padding: 6px 0; transition: color .2s; }
+    nav a:not(.nav-cta)::after { content: ""; position: absolute; left: 0; bottom: 0; width: 100%; height: 2px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform .35s var(--ease); }
+    nav a:not(.nav-cta):hover, nav a:not(.nav-cta):focus-visible, nav a.active { color: #fff; }
+    nav a:not(.nav-cta):hover::after, nav a.active::after { transform: scaleX(1); }
+    .nav-cta { padding: 11px 16px; background: #fff; color: var(--navy) !important; border-radius: 6px; transition: transform .25s var(--ease), background .25s, box-shadow .25s; }
+    .nav-cta:hover { transform: translateY(-2px); background: var(--accent-2); box-shadow: 0 8px 20px rgba(201,167,124,.35); }
+    .menu-toggle { display: none; border: 1px solid #6e7c8b; color: white; background: transparent; border-radius: 6px; padding: 9px 12px; cursor: pointer; }
+
+    /* Hero */
+    .hero { min-height: 680px; display: flex; align-items: center; color: white; position: relative; overflow: hidden; background: #101c2a; isolation: isolate; }
+    .hero::before { content: ""; position: absolute; inset: -6% 0; z-index: -3; background: url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2000&q=85") center 54% / cover no-repeat; transform: translate3d(0, var(--parallax, 0px), 0) scale(1.08); animation: heroZoom 18s ease-out forwards; will-change: transform; }
+    .hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(7,14,22,.95) 0%, rgba(12,25,39,.82) 47%, rgba(12,25,39,.34) 100%); }
+    .hero-glow { position: absolute; z-index: -2; width: 520px; height: 520px; right: -120px; top: -140px; border-radius: 50%; background: radial-gradient(circle, rgba(201,167,124,.28), transparent 68%); filter: blur(20px); animation: floatGlow 9s ease-in-out infinite alternate; }
+    .hero-glow.g2 { right: auto; left: -180px; top: auto; bottom: -260px; width: 460px; height: 460px; background: radial-gradient(circle, rgba(99,140,185,.26), transparent 68%); animation-duration: 12s; }
+    .hero-content { padding: 100px 0 110px; max-width: 790px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; color: #647386; text-transform: uppercase; font-size: 11px; letter-spacing: .22em; font-weight: 800; margin-bottom: 14px; }
+    .eyebrow::before { content: ""; width: 28px; height: 1px; background: var(--accent); }
+    .hero .eyebrow { color: #d4dce4; }
+    h1 { font-family: var(--display); font-size: clamp(42px, 6.8vw, 76px); line-height: 1; letter-spacing: -.05em; max-width: 760px; margin-bottom: 24px; }
+    .hero h1 span { background: linear-gradient(100deg, #c8d0d9 20%, var(--accent-2) 60%, #c8d0d9 100%); background-size: 200% auto; -webkit-background-clip: text; background-clip: text; color: transparent; animation: shimmerText 6s linear infinite; }
+    .hero h2 { color: #f0f3f6; font-size: clamp(20px, 2.6vw, 28px); font-weight: 400; margin-bottom: 15px; }
+    .hero p { max-width: 620px; color: #d1d8e0; font-size: 17px; margin-bottom: 30px; }
+    .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+
+    /* Hero entrance */
+    .hero-content > * { opacity: 0; transform: translateY(28px); animation: riseIn .9s var(--ease) forwards; }
+    .hero-content > :nth-child(1) { animation-delay: .1s; }
+    .hero-content > :nth-child(2) { animation-delay: .25s; }
+    .hero-content > :nth-child(3) { animation-delay: .45s; }
+    .hero-content > :nth-child(4) { animation-delay: .6s; }
+    .hero-content > :nth-child(5) { animation-delay: .78s; }
+
+    .btn { position: relative; overflow: hidden; display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 48px; padding: 13px 20px; border: 1px solid transparent; border-radius: 6px; font-size: 12px; letter-spacing: .06em; font-weight: 900; transition: transform .3s var(--ease), background .25s, border-color .25s, box-shadow .3s; cursor: pointer; }
+    .btn::before { content: ""; position: absolute; top: 0; left: -80%; width: 50%; height: 100%; background: linear-gradient(100deg, transparent, rgba(255,255,255,.45), transparent); transform: skewX(-20deg); transition: left .65s var(--ease); }
+    .btn:hover::before { left: 140%; }
+    .btn:hover { transform: translateY(-3px); }
+    .btn:active { transform: translateY(0) scale(.98); }
+    .btn span[aria-hidden] { transition: transform .3s var(--ease); }
+    .btn:hover span[aria-hidden] { transform: translate(3px, -3px); }
+    .btn-light { background: #fff; color: var(--navy); box-shadow: 0 10px 28px rgba(0,0,0,.22); }
+    .btn-light:hover { background: #f1f4f7; box-shadow: 0 14px 34px rgba(0,0,0,.3); }
+    .btn-outline { color: white; border-color: rgba(255,255,255,.55); background: rgba(255,255,255,.04); backdrop-filter: blur(4px); }
+    .btn-outline:hover { background: rgba(255,255,255,.14); border-color: #fff; }
+    .btn-dark { background: var(--navy); color: white; box-shadow: 0 10px 26px rgba(16,28,42,.25); }
+    .btn-dark:hover { background: #263c53; box-shadow: 0 14px 32px rgba(16,28,42,.32); }
+
+    .scroll-cue { position: absolute; left: 50%; bottom: 22px; width: 24px; height: 38px; border: 2px solid rgba(255,255,255,.5); border-radius: 14px; transform: translateX(-50%); }
+    .scroll-cue::after { content: ""; position: absolute; left: 50%; top: 7px; width: 4px; height: 8px; margin-left: -2px; border-radius: 2px; background: #fff; animation: cue 1.8s ease-in-out infinite; }
+
+    .trust-strip { background: #fff; border-bottom: 1px solid var(--line); position: relative; z-index: 2; }
+    .trust-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .trust-item { padding: 23px 18px; text-align: center; border-right: 1px solid var(--line); transition: background .3s, transform .3s var(--ease); }
+    .trust-item:hover { background: var(--paper); }
+    .trust-item:last-child { border-right: 0; }
+    .trust-item strong { display: block; color: var(--navy); font-size: 13px; letter-spacing: .04em; }
+    .trust-item span { color: var(--muted); font-size: 12px; }
+
+    section { padding: 92px 0; }
+    .section-heading { max-width: 690px; margin: 0 auto 48px; text-align: center; }
+    .section-heading .eyebrow { justify-content: center; }
+    h2.section-title { font-family: var(--display); color: var(--navy); font-size: clamp(30px, 4vw, 44px); line-height: 1.12; letter-spacing: -.035em; margin-bottom: 14px; }
+    .section-heading p { color: var(--muted); }
+
+    .services { background: var(--paper); position: relative; }
+    .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .service-card { position: relative; background: #fff; border: 1px solid #e5e9ed; border-radius: var(--radius); overflow: hidden; box-shadow: 0 6px 22px rgba(16,28,42,.04); transition: transform .45s var(--ease), box-shadow .45s var(--ease), border-color .3s; }
+    .service-card::after { content: ""; position: absolute; left: 0; bottom: 0; height: 3px; width: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-2)); transform: scaleX(0); transform-origin: left; transition: transform .5s var(--ease); }
+    .service-card:hover { transform: translateY(-8px); box-shadow: var(--shadow); border-color: #d6dde4; }
+    .service-card:hover::after { transform: scaleX(1); }
+    .service-image { height: 190px; overflow: hidden; background: #dbe1e7; position: relative; }
+    .service-image::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, rgba(16,28,42,.25)); opacity: 0; transition: opacity .4s; }
+    .service-card:hover .service-image::after { opacity: 1; }
+    .service-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); }
+    .service-card:hover img { transform: scale(1.09); }
+    .service-copy { padding: 24px 24px 28px; }
+    .service-number { font-size: 11px; color: #7c8997; letter-spacing: .15em; font-weight: 900; transition: color .3s; }
+    .service-card:hover .service-number { color: #a07f55; }
+    .service-copy h3 { font-family: var(--display); color: var(--navy); font-size: 20px; margin: 7px 0 8px; }
+    .service-copy p { color: var(--muted); font-size: 14px; }
+
+    .about-grid { display: grid; grid-template-columns: .92fr 1.08fr; align-items: center; gap: 70px; }
+    .about-visual { min-height: 470px; position: relative; }
+    .about-photo { position: absolute; inset: 0 42px 35px 0; border-radius: var(--radius); overflow: hidden; background: #d7dde4; box-shadow: var(--shadow); }
+    .about-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+    .about-visual:hover .about-photo img { transform: scale(1.05); }
+    .about-visual::before { content: ""; position: absolute; left: -16px; top: -16px; width: 120px; height: 120px; border-top: 3px solid var(--accent); border-left: 3px solid var(--accent); border-radius: 6px 0 0 0; opacity: .85; }
+    .about-badge { position: absolute; right: 0; bottom: 0; width: 185px; padding: 25px; background: var(--navy); color: white; border: 7px solid white; border-radius: 4px; box-shadow: 0 18px 40px rgba(16,28,42,.3); animation: bob 5s ease-in-out infinite; }
+    .about-badge strong { display: block; font-family: var(--display); font-size: 34px; line-height: 1.1; }
+    .about-badge span { display: block; font-size: 11px; color: #c7d0da; margin-top: 8px; }
+    .about-copy h2 { font-family: var(--display); color: var(--navy); font-size: clamp(30px, 4vw, 42px); line-height: 1.12; letter-spacing: -.035em; margin-bottom: 19px; }
+    .about-copy p { color: var(--muted); margin-bottom: 15px; }
+    .check-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 25px 0 30px; }
+    .check { font-size: 13px; font-weight: 800; color: var(--navy); display: flex; gap: 9px; align-items: flex-start; transition: transform .3s var(--ease); }
+    .check:hover { transform: translateX(4px); }
+    .check span { display: grid; place-items: center; flex-shrink: 0; width: 20px; height: 20px; background: #e9edf1; border-radius: 50%; font-size: 11px; transition: background .3s, color .3s; }
+    .check:hover span { background: var(--navy); color: #fff; }
+
+    .process { background: var(--navy); color: white; position: relative; overflow: hidden; }
+    .process::before { content: ""; position: absolute; width: 600px; height: 600px; right: -200px; top: -240px; border-radius: 50%; background: radial-gradient(circle, rgba(201,167,124,.14), transparent 65%); }
+    .process .section-heading h2 { color: white; }
+    .process .section-heading p { color: #c6d0db; }
+    .process .eyebrow { color: #c6d0db; }
+    .process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; position: relative; }
+    .process-card { position: relative; padding: 25px 0 0; border-top: 1px solid #506071; transition: transform .4s var(--ease); }
+    .process-card::before { content: ""; position: absolute; top: -1px; left: 0; height: 2px; width: 0; background: linear-gradient(90deg, var(--accent), var(--accent-2)); transition: width .9s var(--ease); }
+    .process-card.in::before, .process-card:hover::before { width: 100%; }
+    .process-card:hover { transform: translateY(-5px); }
+    .process-card .num { font-size: 12px; color: var(--accent-2); letter-spacing: .14em; font-weight: 900; }
+    .process-card h3 { font-family: var(--display); margin: 13px 0 8px; font-size: 20px; }
+    .process-card p { color: #c6d0db; font-size: 14px; }
+
+    .cta { background: linear-gradient(120deg, #e9edf1, #dfe5eb, #e9edf1); background-size: 200% 200%; animation: bgShift 14s ease-in-out infinite; text-align: center; }
+    .cta-inner { max-width: 800px; margin: auto; }
+    .cta .eyebrow { color: #647386; }
+    .cta h2 { font-family: var(--display); color: var(--navy); font-size: clamp(30px, 4.5vw, 46px); line-height: 1.1; letter-spacing: -.04em; margin-bottom: 15px; }
+    .cta p { color: var(--muted); max-width: 620px; margin: 0 auto 25px; }
+    .cta .btn:not(.btn-dark):hover { background: #fff; }
+
+    .contact { background: #fff; }
+    .contact-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 55px; align-items: start; }
+    .contact-copy h2 { font-family: var(--display); color: var(--navy); font-size: clamp(28px, 4vw, 40px); line-height: 1.12; letter-spacing: -.035em; margin-bottom: 15px; }
+    .contact-copy > p { color: var(--muted); margin-bottom: 22px; }
+    .contact-line { display: flex; gap: 13px; padding: 17px 0; border-bottom: 1px solid var(--line); transition: transform .3s var(--ease), border-color .3s; }
+    .contact-line:hover { transform: translateX(5px); border-color: var(--accent); }
+    .contact-icon { width: 38px; height: 38px; display: grid; place-items: center; background: #eef1f4; border-radius: 8px; color: var(--navy); flex-shrink: 0; font-weight: 900; transition: background .3s, color .3s; }
+    .contact-line:hover .contact-icon { background: var(--navy); color: #fff; }
+    .contact-line small { display: block; color: var(--muted); text-transform: uppercase; font-size: 10px; letter-spacing: .13em; font-weight: 900; }
+    .contact-line a, .contact-line strong { display: block; color: var(--navy); font-size: 16px; font-weight: 800; }
+    .contact-form { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(22px, 4vw, 35px); box-shadow: 0 16px 44px rgba(16,28,42,.07); }
+    .contact-form h3 { font-family: var(--display); color: var(--navy); font-size: 22px; margin-bottom: 5px; }
+    .form-intro { color: var(--muted); font-size: 13px; margin-bottom: 22px; }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    label { display: block; color: #344253; font-size: 12px; font-weight: 800; margin-bottom: 6px; }
+    input, textarea, select { width: 100%; padding: 12px 13px; background: white; border: 1px solid #d3dae1; border-radius: 8px; margin-bottom: 16px; color: var(--ink); outline: none; transition: border-color .25s, box-shadow .25s, transform .25s var(--ease); }
+    input:hover, textarea:hover, select:hover { border-color: #b4c0cc; }
+    input:focus, textarea:focus, select:focus { border-color: #63778d; box-shadow: 0 0 0 4px rgba(99,119,141,.14); transform: translateY(-1px); }
+    textarea { min-height: 115px; resize: vertical; }
+    .form-note { font-size: 11px; color: var(--muted); margin-top: 10px; }
+
+    footer { background: #090f16; color: #c5cdd6; padding: 30px 0; border-top: 2px solid transparent; border-image: linear-gradient(90deg, transparent, var(--accent), transparent) 1; }
+    .footer-row { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+    .footer-brand { color: white; font-size: 13px; font-weight: 900; letter-spacing: .08em; }
+    .footer-tag { font-size: 10px; color: #9da9b5; letter-spacing: .15em; }
+    .copyright { font-size: 11px; color: #9da9b5; }
+    :focus-visible { outline: 3px solid #93a7bc; outline-offset: 3px; }
+
+    /* Back to top */
+    .to-top { position: fixed; right: 22px; bottom: 22px; z-index: 30; width: 46px; height: 46px; border-radius: 50%; border: 0; background: var(--navy); color: #fff; font-size: 18px; cursor: pointer; box-shadow: 0 10px 26px rgba(16,28,42,.35); opacity: 0; transform: translateY(16px); pointer-events: none; transition: opacity .35s, transform .35s var(--ease), background .25s; }
+    .to-top.show { opacity: 1; transform: none; pointer-events: auto; }
+    .to-top:hover { background: var(--accent); color: var(--navy); }
+
+    /* Scroll reveal (only active when JS is running) */
+    .js .reveal { opacity: 0; transform: translateY(34px); transition: opacity .9s var(--ease), transform .9s var(--ease); transition-delay: var(--d, 0s); }
+    .js .reveal.left { transform: translateX(-40px); }
+    .js .reveal.right { transform: translateX(40px); }
+    .js .reveal.zoom { transform: scale(.94); }
+    .js .reveal.in { opacity: 1; transform: none; }
+
+    @keyframes riseIn { to { opacity: 1; transform: none; } }
+    @keyframes heroZoom { from { scale: 1.08; } to { scale: 1; } }
+    @keyframes floatGlow { from { transform: translate(0, 0); } to { transform: translate(-40px, 30px); } }
+    @keyframes shimmerText { to { background-position: 200% center; } }
+    @keyframes cue { 0% { opacity: 0; transform: translateY(0); } 40% { opacity: 1; } 100% { opacity: 0; transform: translateY(14px); } }
+    @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    @keyframes bgShift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+
+    @media (max-width: 900px) {
+      nav { gap: 15px; }
+      .about-grid { gap: 40px; }
+      .service-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-grid { gap: 30px; }
+    }
+    @media (max-width: 720px) {
+      .topline-inner { justify-content: center; text-align: center; }
+      .topline-inner span { display: none; }
+      .nav { min-height: 72px; }
+      header.scrolled .nav { min-height: 64px; }
+      .brand-mark { width: 39px; height: 39px; }
+      .brand-name { font-size: 12px; }
+      .brand-tag { font-size: 8px; }
+      .menu-toggle { display: block; }
+      nav { display: none; position: absolute; left: 0; right: 0; top: 100%; padding: 20px 5%; background: var(--navy); border-top: 1px solid #344353; flex-direction: column; align-items: stretch; gap: 0; }
+      nav.open { display: flex; animation: riseIn .35s var(--ease) both; }
+      nav a { padding: 12px 0; }
+      .nav-cta { text-align: center; margin-top: 8px; }
+      .hero { min-height: 620px; }
+      .hero::after { background: linear-gradient(90deg, rgba(7,14,22,.94), rgba(12,25,39,.72)); }
+      .hero-content { padding: 82px 0; }
+      .hero p { font-size: 15px; }
+      .scroll-cue { display: none; }
+      section { padding: 68px 0; }
+      .trust-grid { grid-template-columns: 1fr; }
+      .trust-item { border-right: 0; border-bottom: 1px solid var(--line); padding: 15px; }
+      .trust-item:last-child { border-bottom: 0; }
+      .service-grid, .about-grid, .process-grid, .contact-grid { grid-template-columns: 1fr; }
+      .service-image { height: 205px; }
+      .about-visual { min-height: 380px; }
+      .about-photo { inset: 0 32px 28px 0; }
+      .about-badge { width: 160px; padding: 18px; }
+      .check-grid { grid-template-columns: 1fr; }
+      .process-grid { gap: 25px; }
+      .field-row { grid-template-columns: 1fr; gap: 0; }
+      .footer-row { flex-direction: column; text-align: center; }
+      .js .reveal.left, .js .reveal.right { transform: translateY(30px); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+      .js .reveal { opacity: 1; transform: none; }
+      .hero-content > * { opacity: 1; transform: none; }
+    }
+  </style>
+  <script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+
+  <div class="topline">
+    <div class="container topline-inner">
+      <span>RESIDENTIAL &amp; COMMERCIAL RENOVATIONS · METRO ATLANTA</span>
+      <a href="tel:+14704488798">Call us: 470-448-8798</a>
+    </div>
+  </div>
+
+  <header id="top-header">
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="Urban Craft Renovations home">
+        <span class="brand-mark">UCR</span>
+        <span><span class="brand-name">URBAN CRAFT<br>RENOVATIONS LLC</span><span class="brand-tag">YOUR VISION, OUR MISSION</span></span>
+      </a>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav" onclick="toggleMenu(this)">MENU ☰</button>
+      <nav id="main-nav" aria-label="Main navigation">
+        <a href="#home" onclick="closeMenu()">Home</a>
+        <a href="#services" onclick="closeMenu()">Services</a>
+        <a href="#about" onclick="closeMenu()">About</a>
+        <a href="#process" onclick="closeMenu()">Our Process</a>
+        <a href="#contact" onclick="closeMenu()">Contact</a>
+        <a class="nav-cta" href="#contact" onclick="closeMenu()">GET AN ESTIMATE ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <span class="hero-glow" aria-hidden="true"></span>
+      <span class="hero-glow g2" aria-hidden="true"></span>
+      <div class="container hero-content">
+        <div class="eyebrow">Metro Atlanta · Georgia</div>
+        <h1>YOUR VISION.<br><span>OUR MISSION.</span></h1>
+        <h2>Thoughtful renovations. Quality finishes.</h2>
+        <p>From painting and flooring to drywall, carpentry and remodeling, Urban Craft Renovations helps improve the spaces where life and business happen.</p>
+        <div class="actions">
+          <a class="btn btn-light" href="#contact">REQUEST A FREE ESTIMATE <span aria-hidden="true">↗</span></a>
+          <a class="btn btn-outline" href="tel:+14704488798">CALL 470-448-8798</a>
+        </div>
+      </div>
+      <span class="scroll-cue" aria-hidden="true"></span>
+    </section>
+
+    <div class="trust-strip" aria-label="Service overview">
+      <div class="container trust-grid">
+        <div class="trust-item reveal" style="--d:0s"><strong>RESIDENTIAL &amp; COMMERCIAL</strong><span>Projects for different kinds of properties</span></div>
+        <div class="trust-item reveal" style="--d:.12s"><strong>RENOVATION &amp; REPAIR</strong><span>From prep work to finishing touches</span></div>
+        <div class="trust-item reveal" style="--d:.24s"><strong>METRO ATLANTA, GEORGIA</strong><span>Local service area</span></div>
+      </div>
+    </div>
+
+    <section class="services" id="services">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="eyebrow">What we do</div>
+          <h2 class="section-title">The right work for your space.</h2>
+          <p>Explore our renovation and property improvement services, with a focus on careful execution and clean finishes.</p>
+        </div>
+        <div class="service-grid">
+          <article class="service-card reveal" style="--d:0s">
+            <div class="service-image"><img src="https://images.unsplash.com/photo-1562259949-e8e7689d7828?auto=format&fit=crop&w=900&q=80" alt="Interior painting and wall finishing" loading="lazy" onerror="this.style.display='none'"></div>
+            <div class="service-copy"><span class="service-number">01 / FINISHES</span><h3>Painting</h3><p>Interior and exterior painting, surface preparation, touch-ups and finishing work.</p></div>
+          </article>
+          <article class="service-card reveal" style="--d:.1s">
+            <div class="service-image"><img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=900&q=80" alt="Drywall and wall repair work" loading="lazy" onerror="this.style.display='none'"></div>
+            <div class="service-copy"><span class="service-number">02 / REPAIR</span><h3>Drywall</h3><p>Installation, patching, repairs and surface preparation before painting.</p></div>
+          </article>
+          <article class="service-card reveal" style="--d:.2s">
+            <div class="service-image"><img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=80" alt="Modern finished flooring in a home" loading="lazy" onerror="this.style.display='none'"></div>
+            <div class="service-copy"><span class="service-number">03 / INTERIORS</span><h3>Flooring</h3><p>Floor installation and replacement for renovation and improvement projects.</p></div>
+          </article>
+          <article class="service-card reveal" style="--d:0s">
+            <div class="service-image"><img src="https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=900&q=80" alt="Contemporary bathroom renovation" loading="lazy" onerror="this.style.display='none'"></div>
+            <div class="service-copy"><span class="service-number">04 / TRANSFORMATION</span><h3>Remodeling</h3><p>Bathroom, interior and general remodeling shaped around your property's needs.</p></div>
+          </article>
+          <article class="service-card reveal" style="--d:.1s">
+            <div class="service-image"><img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=900&q=80" alt="Carpentry and wood finishing detail" loading="lazy" onerror="this.style.display='none'"></div>
+            <div class="service-copy"><span class="service-number">05 / DETAIL</span><h3>Carpentry</h3><p>Wood repairs, trim, finish work and custom carpentry details.</p></div>
+          </article>
+          <article class="service-card reveal" style="--d:.2s">
+            <div class="service-image"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80" alt="Exterior home improvement" loading="lazy" onerror="this.style.display='none'"></div>
+            <div class="service-copy"><span class="service-number">06 / EXTERIORS</span><h3>Exterior Improvements</h3><p>Pressure washing, exterior repairs and improvements to appearance and function.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container about-grid">
+        <div class="about-visual reveal left">
+          <div class="about-photo"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1100&q=85" alt="Bright, carefully finished modern interior" loading="lazy"></div>
+          <div class="about-badge"><strong>UCR</strong><span>URBAN CRAFT RENOVATIONS LLC</span></div>
+        </div>
+        <div class="about-copy reveal right">
+          <div class="eyebrow">About Urban Craft</div>
+          <h2>Better spaces begin with a clear vision.</h2>
+          <p>Urban Craft Renovations LLC provides renovation and improvement services for residential and commercial properties throughout Metro Atlanta.</p>
+          <p>Whether the project involves repairs, updates or a refreshed finish, our goal is to make the process clear and deliver work that respects the space and the details.</p>
+          <div class="check-grid">
+            <div class="check"><span>✓</span> Residential &amp; commercial</div>
+            <div class="check"><span>✓</span> Multiple renovation services</div>
+            <div class="check"><span>✓</span> Detail-focused finishing</div>
+            <div class="check"><span>✓</span> Metro Atlanta service area</div>
+          </div>
+          <a class="btn btn-dark" href="#contact">TELL US ABOUT YOUR PROJECT ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="process" id="process">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="eyebrow">How it works</div>
+          <h2 class="section-title">A clear start to your next project.</h2>
+          <p>Get in touch and share what you have in mind. We'll use the details to start a conversation about your project.</p>
+        </div>
+        <div class="process-grid">
+          <article class="process-card reveal" style="--d:0s"><span class="num">STEP 01</span><h3>Tell us what you need</h3><p>Call or send your contact details and a short description of the work.</p></article>
+          <article class="process-card reveal" style="--d:.15s"><span class="num">STEP 02</span><h3>Discuss the project</h3><p>Share the type of service, the property and any important project details.</p></article>
+          <article class="process-card reveal" style="--d:.3s"><span class="num">STEP 03</span><h3>Plan your next step</h3><p>Connect with our team to discuss your renovation needs and estimate request.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container cta-inner reveal zoom">
+        <div class="eyebrow">Let's get started</div>
+        <h2>Ready to give your space a fresh start?</h2>
+        <p>Tell us about your renovation, repair or property improvement project in Metro Atlanta.</p>
+        <div class="actions" style="justify-content:center">
+          <a class="btn btn-dark" href="#contact">REQUEST AN ESTIMATE ↗</a>
+          <a class="btn" style="border-color:#aab4bf;color:#142437" href="tel:+14704488798">CALL 470-448-8798</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="eyebrow">Contact</div>
+          <h2 class="section-title">Let's talk about your project.</h2>
+          <p>Call us or prepare a text message with your project details using the form.</p>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-copy reveal left">
+            <h2>Start with a conversation.</h2>
+            <p>Let us know which service you need and how we can reach you.</p>
+            <div class="contact-line"><span class="contact-icon" aria-hidden="true">☎</span><div><small>Primary phone</small><a href="tel:+14704488798">470-448-8798</a></div></div>
+            <div class="contact-line"><span class="contact-icon" aria-hidden="true">☎</span><div><small>Secondary phone</small><a href="tel:+16789862558">678-986-2558</a></div></div>
+            <div class="contact-line"><span class="contact-icon" aria-hidden="true">⌖</span><div><small>Service area</small><strong>Metro Atlanta, Georgia</strong></div></div>
+          </div>
+          <form class="contact-form reveal right" onsubmit="sendRequest(event)">
+            <h3>Project inquiry</h3>
+            <p class="form-intro">Complete the fields below. Your messaging app will open with the information ready to send.</p>
+            <div class="field-row">
+              <div><label for="name">Your name *</label><input id="name" name="name" autocomplete="name" required></div>
+              <div><label for="phone">Phone number *</label><input id="phone" name="phone" type="tel" autocomplete="tel" required></div>
+            </div>
+            <label for="service">Service needed *</label>
+            <select id="service" name="service" required>
+              <option value="Painting">Painting</option><option value="Drywall">Drywall</option><option value="Flooring">Flooring</option><option value="Remodeling">Remodeling</option><option value="Carpentry">Carpentry</option><option value="Exterior Improvements">Exterior Improvements</option><option value="Other">Other</option>
+            </select>
+            <label for="message">Project details</label>
+            <textarea id="message" name="message" placeholder="Briefly describe the work you have in mind..."></textarea>
+            <button class="btn btn-dark" style="width:100%" type="submit">PREPARE TEXT MESSAGE ↗</button>
+            <p class="form-note">This form opens your device's messaging app; it does not send automatically. If it doesn't open, call us directly.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <div><div class="footer-brand">URBAN CRAFT RENOVATIONS LLC</div><div class="footer-tag">YOUR VISION, OUR MISSION.</div></div>
+      <div class="copyright">© <span id="year"></span> Urban Craft Renovations LLC. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <button class="to-top" id="toTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    function toggleMenu(button) {
+      const nav = document.getElementById("main-nav");
+      const isOpen = nav.classList.toggle("open");
+      button.setAttribute("aria-expanded", String(isOpen));
+    }
+    function closeMenu() {
+      const nav = document.getElementById("main-nav");
+      nav.classList.remove("open");
+      const button = document.querySelector(".menu-toggle");
+      if (button) button.setAttribute("aria-expanded", "false");
+    }
+    function sendRequest(event) {
+      event.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const service = document.getElementById("service").value;
+      const details = document.getElementById("message").value.trim();
+      const message = [
+        "Hello Urban Craft Renovations LLC,",
+        "",
+        "Name: " + name,
+        "Phone: " + phone,
+        "Service needed: " + service,
+        "Project details: " + (details || "Not provided")
+      ].join("\n");
+      window.location.href = "sms:+14704488798?&body=" + encodeURIComponent(message);
+    }
+
+    /* Scroll reveal */
+    (function () {
+      const items = document.querySelectorAll(".reveal");
+      if (!("IntersectionObserver" in window)) { items.forEach(el => el.classList.add("in")); return; }
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) { entry.target.classList.add("in"); io.unobserve(entry.target); }
+        });
+      }, { threshold: 0.14, rootMargin: "0px 0px -6% 0px" });
+      items.forEach(el => io.observe(el));
+    })();
+
+    /* Header, progress bar, parallax, back-to-top */
+    (function () {
+      const header = document.getElementById("top-header");
+      const bar = document.getElementById("progress");
+      const toTop = document.getElementById("toTop");
+      const hero = document.querySelector(".hero");
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      let ticking = false;
+      function update() {
+        const y = window.scrollY;
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.transform = "scaleX(" + (max > 0 ? y / max : 0) + ")";
+        header.classList.toggle("scrolled", y > 40);
+        toTop.classList.toggle("show", y > 700);
+        if (!reduce && y < hero.offsetHeight + 100) hero.style.setProperty("--parallax", (y * 0.22) + "px");
+        ticking = false;
+      }
+      window.addEventListener("scroll", () => { if (!ticking) { requestAnimationFrame(update); ticking = true; } }, { passive: true });
+      update();
+    })();
+
+    /* Active nav link */
+    (function () {
+      const links = document.querySelectorAll('nav a[href^="#"]:not(.nav-cta)');
+      const map = new Map();
+      links.forEach(a => { const s = document.querySelector(a.getAttribute("href")); if (s) map.set(s, a); });
+      if (!("IntersectionObserver" in window)) return;
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            links.forEach(l => l.classList.remove("active"));
+            map.get(entry.target).classList.add("active");
+          }
+        });
+      }, { rootMargin: "-45% 0px -50% 0px" });
+      map.forEach((_, section) => io.observe(section));
+    })();
+  </script>
+</body>
+</html>
